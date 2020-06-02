@@ -28,6 +28,7 @@
   <script src="js/Creeper.js" type="text/javascript"></script>
 
   <script src="js/loader.js" type="text/javascript"></script>
+  <script src="js/scenarios.js" type="text/javascript"></script>
 </head>
 
 <body onload=main();>
@@ -44,21 +45,56 @@
         <div class="container">
           <a>Balls</a>
           <div class="divider"></div>
-          <img id="btn-bask" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://www.tiendadepelotas.com/wp-content/uploads/2019/09/bal%C3%B3n-de-baloncesto-nike-dominate.jpg">
-          <img id="btn-base" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://images-na.ssl-images-amazon.com/images/I/719RXbsHp0L._AC_SX425_.jpg">
-          <img id="btn-teni" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://www.pluckley.net/wp-content/uploads/2016/03/Tennis-Ball-PNG.png">
-          <img id="btn-bowl" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://pngimg.com/uploads/bowling/bowling_PNG10.png">
+          <div class="row">
+            <a id="btn-bask" class="btn-floating btn-large waves-effect waves-light disabled">
+              <img id="img-bask" style="width: 100%; height: 100%; opacity: 0.5;" src="https://www.tiendadepelotas.com/wp-content/uploads/2019/09/bal%C3%B3n-de-baloncesto-nike-dominate.jpg">
+            </a>
+          </div>
+          
+          <div class="row">
+            <a id="btn-base" class="btn-floating btn-large waves-effect waves-light">
+              <img id="img-base" style="width: 100%; height: 100%;" src="https://images-na.ssl-images-amazon.com/images/I/719RXbsHp0L._AC_SX425_.jpg">
+            </a>
+          </div>
+          
+          <div class="row">
+            <a id="btn-teni" class="btn-floating btn-large waves-effect waves-light">
+              <img id="img-teni" style="width: 100%; height: 100%;" src="https://www.pluckley.net/wp-content/uploads/2016/03/Tennis-Ball-PNG.png">
+            </a>  
+          </div>
+          
+          <div class="row">
+            <a id="btn-bowl" class="btn-floating btn-large waves-effect waves-light">
+              <img id="img-bowl" style="width: 100%; height: 100%;" src="https://pngimg.com/uploads/bowling/bowling_PNG10.png">
+            </a>
+          </div>
+          
+          <div class="row">
+
+          </div>
+          
         </div>
         <div class="container">
             <a>Scenarios</a> 
+            <div class="row">
+              <a id="btn-eart" class="btn-floating btn-large waves-effect waves-light disabled">
+                <img id="img-eart" style="width: 100%; height: 100%; opacity: 0.5;" src="https://pluspng.com/img-png/earth-png-1600.png">
+              </a>
+            </div>
             <div class="divider"></div>
-            <img id="btn-eart" class="materialboxed defau" style="margin-top: 5px; width: 75; height: 75px;" src="https://pluspng.com/img-png/earth-png-1600.png">
-            <img id="btn-moon" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://pngimg.com/uploads/moon/moon_PNG20.png">
-            <img id="btn-mars" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://upload.wikimedia.org/wikipedia/commons/f/f5/3D_Mars.png">
-        </div>
-
-        
-
+            
+            <div class="row">
+              <a id="btn-moon" class="btn-floating btn-large waves-effect waves-light">
+                <img id="img-moon" style="width: 100%; height: 100%;" src="https://pngimg.com/uploads/moon/moon_PNG20.png">
+              </a>
+            </div>
+            
+            <div class="row">
+              <a id="btn-mars" class="btn-floating btn-large waves-effect waves-light">
+                <img id="img-mars" style="width: 100%; height: 100%;" src="https://upload.wikimedia.org/wikipedia/commons/f/f5/3D_Mars.png">
+              </a>
+            </div>
+          </div>
       </div>
       <div class="col s6">
         <!-- CANVAS -->
@@ -143,7 +179,7 @@
       </div>
       <div class="col s5">
         <div class="row">
-          <a id="loadObj" class="waves-effect waves-light btn">Load OBJ</a>
+          <a id="btn-load" class="waves-effect waves-light btn">Load OBJ</a>
           <a id="btn-pers" class="waves-effect waves-light btn">Change Pers</a>
           <a id="btn-cam" class="waves-effect waves-light btn">Change Camera</a>
           <a id="btn-init" class="waves-effect waves-light btn">INICIAR!</a>

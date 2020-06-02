@@ -5,11 +5,6 @@ hex = "#ffffff"
 function toolsEventHandler(e) {
   console.log("Enter EventHandler with " + e);
 
-  if (e == 'playSound') {
-    playSound();
-  }
-
-
   // older project lines
   if (e === 'creeper') {
     program.addMesh(new Creeper());
@@ -217,6 +212,9 @@ function onCamRotZ(e) {
 }
 
 function initApp() {
+
+  document.getElementById("btn-init").setAttribute("class", "waves-effect waves-light btn disabled")
+
   program.addMesh(new Floor());
   if(!backgorundPlaying){
     backgorundPlaying = true;
@@ -226,13 +224,26 @@ function initApp() {
 
 function askForFilename() {
   // ASK FOR FILENAME
-  loadObj("models/Mars.obj", "imgs/mars.png");
+  loadObj("Mars.obj", "mars.png");
 }
 
 function initEventHandler(e) {
+
+  // rightside buttons
   document.getElementById("btn-init").addEventListener("click", initApp);
-  document.getElementById("loadObj").addEventListener("click", askForFilename);
+  document.getElementById("btn-load").addEventListener("click", askForFilename);
   document.getElementById("btn-cam").addEventListener("click", function(){loadSound("throw.flac", false, 0.5)});
+
+  // leftside buttons (balls)
+  document.getElementById("btn-base").addEventListener("click", function(){ballLoader("baseball")});
+  document.getElementById("btn-teni").addEventListener("click", function(){ballLoader("tenis")});
+  document.getElementById("btn-bowl").addEventListener("click", function(){ballLoader("bowling")});
+  document.getElementById("btn-bask").addEventListener("click", function(){ballLoader("basket")});
+
+  //leftside buttons (scenarios)
+  document.getElementById("btn-eart").addEventListener("click", function(){scenarioLoader("earth")});
+  document.getElementById("btn-moon").addEventListener("click", function(){scenarioLoader("moon")});
+  document.getElementById("btn-mars").addEventListener("click", function(){scenarioLoader("mars")});
 
   // document.addEventListener("keydown", onDocumentKeyDown, false);
 

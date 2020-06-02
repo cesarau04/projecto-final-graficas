@@ -1,12 +1,16 @@
 function loadObj(path, texture) {
 
+    finObj = null;
+
+    imgsPath = "imgs/"
+    modelsPath = "models/"
     var objLoader = new THREE.OBJLoader()
 
     objLoader.load(
-        path,
+        modelsPath + path,
 
         function (obj) {
-            let newMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff, map: new THREE.TextureLoader().load(texture), side: THREE.TwoSide })
+            let newMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff, map: new THREE.TextureLoader().load(imgsPath + texture), side: THREE.TwoSide })
             obj.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
                     child.material = newMaterial;
@@ -14,7 +18,8 @@ function loadObj(path, texture) {
                 }
             });
 
-            program.addMesh(obj)
+            program.addMesh(obj);
+            sceneMars = true;
         },
 
         function (xhr) {
@@ -22,7 +27,7 @@ function loadObj(path, texture) {
         },
 
         function (err) {
-            console.log('Couldnt open obj at' + path);
+            console.log('Couldnt open obj at' + imgsPath + path);
         }
     )
 }
@@ -43,3 +48,30 @@ function loadSound(soundFile, continuous, volume) {
       sound.play();
     })
   }
+
+function ballLoader(ball) {
+    switch(ball){
+        case "baseball":
+            break;
+        case "tenis":
+            break;
+        case "bowling":
+            break;
+        case "basket":
+            break;
+    }
+}
+
+function scenarioLoader(scenario) {
+    switch(scenario){
+        case "earth":
+            earthScenario();
+            break;
+        case "moon":
+            moonScenario();
+            break;
+        case "mars":
+            marsScenario();
+            break;
+    }
+}
