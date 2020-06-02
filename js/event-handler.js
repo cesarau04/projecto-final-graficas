@@ -3,50 +3,6 @@ backgorundPlaying = false;
 hex = "#ffffff"
 
 function toolsEventHandler(e) {
-  console.log("Enter EventHandler with " + e);
-
-  // older project lines
-  if (e === 'creeper') {
-    program.addMesh(new Creeper());
-    program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
-  }
-  if (e === 'floor') {
-    program.addMesh(new Floor());
-    program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
-  }
-
-  if (e === "sphere") {
-    program.addMesh(new Sphere());
-    program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
-  }
-  if (e === "box") {
-    program.addMesh(new Box());
-    program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
-  }
-  if (e === "cylinder") {
-    program.addMesh(new Cylinder());
-    program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
-  }
-  if (e === "cone") {
-    program.addMesh(new Cone());
-    program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
-  }
-  if (e === "torus") {
-    program.addMesh(new Torus());
-    program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
-  }
-  if (e === "torus-knot") {
-    program.addMesh(new TorusKnot());
-    program.currentSelected.changeWireframe(isWireFrame);
-    changeColor(hex);
-  }
   if (e === "solid") {
     isWireFrame = false;
     for (i = 0; i < program.objectsInScene.length; i++) {
@@ -58,25 +14,6 @@ function toolsEventHandler(e) {
       program.objectsInScene[i].changeWireframe(true);
     }
   }
-
-  if (e === "camera-change") {
-    if (program.bIsCameraOrto) {
-      program.createPerspectiveCamera();
-    } else {
-      program.createOrtoCamera(-5, 5, 5, -5);
-    }
-  }
-
-  if (e === "reposition") {
-    if (program.bIsCameraOrto) {
-      program.camera.rotation = program.cameraRotation
-      program.createOrtoCamera();
-    } else {
-      program.camera.rotation = program.cameraRotation
-      program.createPerspectiveCamera();
-    }
-  }
-
   if (e === "delete-current") {
     newScene = []
     console.log(program.objectsInScene);
@@ -88,8 +25,6 @@ function toolsEventHandler(e) {
         newScene.push(program.objectsInScene[i])
       }
     }
-
-
     var bkCamera = program.camera;
     var bkLight = program.light;
     program.scene.dispose();
@@ -107,7 +42,7 @@ function toolsEventHandler(e) {
 }
 
 function colorPaletteEvent() {
-  hex = document.getElementById("color-palette").value//.replace("#","0x")
+  hex = document.getElementById("color-palette").value
   console.log(hex);
   changeColor(hex);
 }
@@ -124,39 +59,13 @@ function changeColor(rgb) {
   }
 }
 
-function onModeChange(e) {
-  // EditMode = !EditMode
-  console.log("EditMode val: ") // + EditMode);
-}
-
 function resetUI() {
-  // document.getElementById("zoom-slider").value = 0
-  // document.getElementById("pan-slider").value = 0
-  // document.getElementById("dolly-slider").value = 0
-  // document.getElementById("tilt-slider").value = 0
 }
 
 function refreshTransformUI() {
   if (program.currentSelected === null) {
     return
   }
-  // document.getElementById("translation-x").value = program.currentSelected.position.x
-  // document.getElementById("translation-y").value = program.currentSelected.position.y
-  // document.getElementById("translation-z").value = program.currentSelected.position.z
-
-  // document.getElementById("rotation-x").value = program.currentSelected.rotation.x
-  // document.getElementById("rotation-y").value = program.currentSelected.rotation.y
-  // document.getElementById("rotation-z").value = program.currentSelected.rotation.z
-
-  // document.getElementById("scale-x").value = program.currentSelected.scale.x
-  // document.getElementById("scale-y").value = program.currentSelected.scale.y
-  // document.getElementById("scale-z").value = program.currentSelected.scale.z
-
-  // if (program.currentSelected.shouldAnimate) {
-  //   document.getElementById("animate").checked = true;
-  // } else {
-  //   document.getElementById("animate").checked = false;
-  // }
 }
 
 // function 
@@ -235,6 +144,20 @@ function parabolaTest() {
 function btn_bask() {
   loadBasketball()
 }
+
+function getValuesParabola() {
+  program.velocity = Number(document.getElementById("velocity_val").value)
+  program.angle = Number(document.getElementById("angle_val").value)
+  program.height = program.currentSelected.position.y
+  program.gravity = Number(document.getElementById("gravity_val").value)
+  
+  program.bShouldThrow = true
+}
+
+function btn_throw() {
+  getValuesParabola()
+}
+
 function initEventHandler(e) {
 
   // rightside buttons
@@ -252,13 +175,9 @@ function initEventHandler(e) {
   document.getElementById("btn-eart").addEventListener("click", function(){scenarioLoader("earth")});
   document.getElementById("btn-moon").addEventListener("click", function(){scenarioLoader("moon")});
   document.getElementById("btn-mars").addEventListener("click", function(){scenarioLoader("mars")});
-
-  // document.addEventListener("keydown", onDocumentKeyDown, false);
-
-  // document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
-  // document.getElementById("pan-slider").addEventListener("change", onPanCamera);
-  // document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
-  // document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
+  
+  // Throw button
+  document.getElementById("btn-throw").addEventListener("click", btn_throw);
 
   // Translation Sliders
   document.getElementById("transl-x-slider").addEventListener("input",translationSliders);
@@ -280,11 +199,6 @@ function initEventHandler(e) {
   
   // Basket button
   document.getElementById("btn-bask").addEventListener("click", btn_bask)
-
-  // document.getElementById("animate").addEventListener("change", onAnimToggle)
-  // document.getElementById("camrot-x-slider").addEventListener("change", onCamRotX)
-  // document.getElementById("camrot-y-slider").addEventListener("change", onCamRotY)
-  // document.getElementById("camrot-z-slider").addEventListener("change", onCamRotZ)
 }
 
 function translationSliders(event) {
