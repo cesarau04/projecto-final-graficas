@@ -138,6 +138,11 @@ class Program {
                 this.bShouldThrow = false
             }
         }
+
+        if(!backgorundPlaying){
+            backgorundPlaying = true;
+            loadSound("background.mp3", true, 0.1);
+        }  
         
         if (sceneEarth){
             console.log("earth")

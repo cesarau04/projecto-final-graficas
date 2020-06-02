@@ -125,10 +125,7 @@ function initApp() {
   document.getElementById("btn-init").setAttribute("class", "waves-effect waves-light btn disabled")
 
   earthScenario();
-  if(!backgorundPlaying){
-    backgorundPlaying = true;
-    loadSound("background.mp3", true, 0.1);
-  }  
+  
 }
 
 function askForFilename() {
@@ -155,15 +152,15 @@ function getValuesParabola() {
 }
 
 function btn_throw() {
-  getValuesParabola()
+  getValuesParabola();
+  loadSound("throw.flac", false, 0.5);
 }
 
 function initEventHandler(e) {
 
   // rightside buttons
-  document.getElementById("btn-init").addEventListener("click", initApp);
   document.getElementById("btn-load").addEventListener("click", askForFilename);
-  document.getElementById("btn-cam").addEventListener("click", function(){loadSound("throw.flac", false, 0.5)});
+  document.getElementById("btn-cam").addEventListener("click", function(){console.log("temp")});
 
   // leftside buttons (balls)
   document.getElementById("btn-base").addEventListener("click", function(){ballLoader("baseball")});

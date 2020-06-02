@@ -24,7 +24,6 @@ function earthScenario(){
 }
 
 function earthSetter(obj){
-    console.log(obj)
     obj.rotation.x = -0.3
     obj.position.z = 2
     obj.position.y = 2
@@ -38,7 +37,6 @@ function moonScenario(){
 }
 
 function moonSetter(obj){
-    console.log(obj)
     obj.scale.x = 0.01
     obj.scale.y = 0.01
     obj.scale.z = 0.01
@@ -54,7 +52,6 @@ function marsScenario(){
 }
 
 function marsSetter(obj){
-    console.log(obj)
     obj.scale.x = 0.01
     obj.scale.y = 0.01
     obj.scale.z = 0.01
