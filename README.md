@@ -1,7 +1,10 @@
 # projecto-final-graficas
 Done by
-Cesar Augusto
+<br>
 Fernando Partida
+<br>
 Ricardo Palma
+<br>
+not done by Cesar Augusto
 
 
