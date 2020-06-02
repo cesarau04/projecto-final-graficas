@@ -63,9 +63,17 @@ function resetUI() {
 }
 
 function refreshTransformUI() {
-  if (program.currentSelected === null) {
-    return
-  }
+  document.getElementById("transl-x-slider").value = 0
+  document.getElementById("transl-y-slider").value = 0
+  document.getElementById("transl-z-slider").value = 0
+
+  document.getElementById("scale-x-slider").value = 0
+  document.getElementById("scale-y-slider").value = 0
+  document.getElementById("scale-z-slider").value = 0
+
+  document.getElementById("rotation-x-slider").value = 0
+  document.getElementById("rotation-y-slider").value = 0
+  document.getElementById("rotation-z-slider").value = 0
 }
 
 // function 
@@ -82,7 +90,7 @@ function onZoomCamera(e) {
   }
 }
 
-var CamVelocityFactor = 50;
+var CamVelocityFactor = 100;
 function onPanCamera(e) {
   var panValue = document.getElementById("pan-slider").value / CamVelocityFactor;
   program.camera.position.x = program.camera.position.x + panValue
@@ -125,10 +133,10 @@ function initApp() {
   document.getElementById("btn-init").setAttribute("class", "waves-effect waves-light btn disabled")
 
   earthScenario();
-  if(!backgorundPlaying){
+  if (!backgorundPlaying) {
     backgorundPlaying = true;
     loadSound("background.mp3", true, 0.1);
-  }  
+  }
 }
 
 function askForFilename() {
@@ -148,9 +156,11 @@ function btn_bask() {
 function getValuesParabola() {
   program.velocity = Number(document.getElementById("velocity_val").value)
   program.angle = Number(document.getElementById("angle_val").value)
+
   program.height = program.currentSelected.position.y
+  console.log(program.currentSelected)
   program.gravity = Number(document.getElementById("gravity_val").value)
-  
+
   program.bShouldThrow = true
 }
 
@@ -163,40 +173,57 @@ function initEventHandler(e) {
   // rightside buttons
   document.getElementById("btn-init").addEventListener("click", initApp);
   document.getElementById("btn-load").addEventListener("click", askForFilename);
-  document.getElementById("btn-cam").addEventListener("click", function(){loadSound("throw.flac", false, 0.5)});
+  document.getElementById("btn-cam").addEventListener("click", function () { loadSound("throw.flac", false, 0.5) });
 
   // leftside buttons (balls)
-  document.getElementById("btn-base").addEventListener("click", function(){ballLoader("baseball")});
-  document.getElementById("btn-teni").addEventListener("click", function(){ballLoader("tenis")});
-  document.getElementById("btn-bowl").addEventListener("click", function(){ballLoader("bowling")});
-  document.getElementById("btn-bask").addEventListener("click", function(){ballLoader("basket")});
+  document.getElementById("btn-base").addEventListener("click", function () { ballLoader("baseball") });
+  document.getElementById("btn-teni").addEventListener("click", function () { ballLoader("tenis") });
+  document.getElementById("btn-bowl").addEventListener("click", function () { ballLoader("bowling") });
+  document.getElementById("btn-bask").addEventListener("click", function () { ballLoader("basket") });
 
   //leftside buttons (scenarios)
-  document.getElementById("btn-eart").addEventListener("click", function(){scenarioLoader("earth")});
-  document.getElementById("btn-moon").addEventListener("click", function(){scenarioLoader("moon")});
-  document.getElementById("btn-mars").addEventListener("click", function(){scenarioLoader("mars")});
-  
+  document.getElementById("btn-eart").addEventListener("click", function () { scenarioLoader("earth") });
+  document.getElementById("btn-moon").addEventListener("click", function () { scenarioLoader("moon") });
+  document.getElementById("btn-mars").addEventListener("click", function () { scenarioLoader("mars") });
+
   // Throw button
   document.getElementById("btn-throw").addEventListener("click", btn_throw);
 
   // Translation Sliders
-  document.getElementById("transl-x-slider").addEventListener("input",translationSliders);
-  document.getElementById("transl-y-slider").addEventListener("input",translationSliders);
-  document.getElementById("transl-z-slider").addEventListener("input",translationSliders);
+  document.getElementById("transl-x-slider").addEventListener("input", translationSliders);
+  document.getElementById("transl-y-slider").addEventListener("input", translationSliders);
+  document.getElementById("transl-z-slider").addEventListener("input", translationSliders);
 
   // Rotation Sliders
-  document.getElementById("rotation-x-slider").addEventListener("input",rotationSliders);
-  document.getElementById("rotation-y-slider").addEventListener("input",rotationSliders);
-  document.getElementById("rotation-z-slider").addEventListener("input",rotationSliders);
+  document.getElementById("rotation-x-slider").addEventListener("input", rotationSliders);
+  document.getElementById("rotation-y-slider").addEventListener("input", rotationSliders);
+  document.getElementById("rotation-z-slider").addEventListener("input", rotationSliders);
 
   // Scale Sliders
-  document.getElementById("scale-x-slider").addEventListener("input",scaleSliders);
-  document.getElementById("scale-y-slider").addEventListener("input",scaleSliders);
-  document.getElementById("scale-z-slider").addEventListener("input",scaleSliders);
+  document.getElementById("scale-x-slider").addEventListener("input", scaleSliders);
+  document.getElementById("scale-y-slider").addEventListener("input", scaleSliders);
+  document.getElementById("scale-z-slider").addEventListener("input", scaleSliders);
+
+
+
+  document.getElementById("transl-x-slider").addEventListener("onchange", refreshTransformUI);
+  document.getElementById("transl-y-slider").addEventListener("onchange", refreshTransformUI);
+  document.getElementById("transl-z-slider").addEventListener("onchange", refreshTransformUI);
+
+  // Rotation Sliders
+  document.getElementById("rotation-x-slider").addEventListener("onchange", refreshTransformUI);
+  document.getElementById("rotation-y-slider").addEventListener("onchange", refreshTransformUI);
+  document.getElementById("rotation-z-slider").addEventListener("onchange", refreshTransformUI);
+
+  // Scale Sliders
+  document.getElementById("scale-x-slider").addEventListener("onchange", refreshTransformUI);
+  document.getElementById("scale-y-slider").addEventListener("onchange", refreshTransformUI);
+  document.getElementById("scale-z-slider").addEventListener("onchange", refreshTransformUI);
+
 
   // Button Test
   document.getElementById("btn-test").addEventListener("click", parabolaTest)
-  
+
   // Basket button
   document.getElementById("btn-bask").addEventListener("click", btn_bask)
 }
@@ -208,7 +235,16 @@ function translationSliders(event) {
   document.getElementById("trans_val_x").innerHTML = newX;
   document.getElementById("trans_val_y").innerHTML = newY;
   document.getElementById("trans_val_z").innerHTML = newZ;
-  program.currentSelected.updatePosition(program.currentSelected.position.x + newX, program.currentSelected.position.y + newY, program.currentSelected.position.z + newZ);
+
+  program.currentSelected.traverse(function (child) {
+    if (child instanceof THREE.Mesh) {
+      program.currentSelected.position.x += program.currentSelected.position.x + newX
+      program.currentSelected.position.y += program.currentSelected.position.y + newY
+      program.currentSelected.position.z += program.currentSelected.position.z + newZ
+    }
+  });
+
+  refreshTransformUI()
 }
 
 function rotationSliders(event) {
@@ -218,7 +254,16 @@ function rotationSliders(event) {
   document.getElementById("rot_val_x").innerHTML = newX;
   document.getElementById("rot_val_y").innerHTML = newY;
   document.getElementById("rot_val_z").innerHTML = newZ;
-  program.currentSelected.updateRotation(program.currentSelected.rotation.x + newX, program.currentSelected.rotation.y + newY, program.currentSelected.rotation.z + newZ);
+
+  program.currentSelected.traverse(function (child) {
+    if (child instanceof THREE.Mesh) {
+      program.currentSelected.rotation.x += program.currentSelected.rotation.x + newX
+      program.currentSelected.rotation.y += program.currentSelected.rotation.y + newY
+      program.currentSelected.rotation.z += program.currentSelected.rotation.z + newZ
+    }
+  });
+
+  refreshTransformUI()
 }
 
 function scaleSliders(event) {
@@ -228,5 +273,14 @@ function scaleSliders(event) {
   document.getElementById("escal_val_x").innerHTML = newX;
   document.getElementById("escal_val_y").innerHTML = newY;
   document.getElementById("escal_val_z").innerHTML = newZ;
-  program.currentSelected.updateScale(program.currentSelected.scale.x + newX, program.currentSelected.scale.y + newY, program.currentSelected.scale.z + newZ);
+
+  program.currentSelected.traverse(function (child) {
+    if (child instanceof THREE.Mesh) {
+      program.currentSelected.scale.x += program.currentSelected.scale.x + newX
+      program.currentSelected.scale.y += program.currentSelected.scale.y + newY
+      program.currentSelected.scale.z += program.currentSelected.scale.z + newZ
+    }
+  });
+
+  refreshTransformUI()
 }

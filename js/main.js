@@ -128,10 +128,11 @@ class Program {
         }
         
         if (this.bShouldThrow) {
+            console.log(this.height)
             let distances = getNextPosition(this.velocity, this.angle, this.height, this.j, this.gravity)
-            if (distances[1] > 0) {
-                this.currentSelected.position.x = distances[0] * 2
-                this.currentSelected.position.y = distances[1] * 2
+            if (this.currentSelected.position.y > 0) {
+                this.currentSelected.position.x = distances[0] * 1
+                this.currentSelected.position.y = distances[1] * 1
                 this.j += 0.01
             } else {
                 this.j = 0.01
