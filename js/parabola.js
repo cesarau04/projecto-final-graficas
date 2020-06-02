@@ -6,8 +6,8 @@ function getNextPosition(velocity, angle, h, x, gravity) {
     let horizontalDistance = v_x * x
     let verticalDistance = h + v_y * x - gravity * Math.pow(x, 2)  / 2
 
-    console.log("Horizontal distanace" + horizontalDistance);
-    console.log("Vertical distanace" + verticalDistance);
+    // console.log("Horizontal distanace" + horizontalDistance);
+    // console.log("Vertical distanace" + verticalDistance);
 
     return [horizontalDistance, verticalDistance]
 }
