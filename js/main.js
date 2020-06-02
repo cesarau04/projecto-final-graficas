@@ -30,9 +30,6 @@ class Program {
         this.anime = null;
         this.cameraRotation = null;
 
-        // this.__restart__ = this.__restart__.bind(this);
-        // this.createLight = tihs.createLight.bind(this);
-        // this.createCamera = this.createCamera.bind(this);
         this.addMesh = this.addMesh.bind(this);
         this.update = this.update.bind(this);
         this.createPerspectiveCamera = this.createPerspectiveCamera.bind(this);
@@ -59,7 +56,7 @@ class Program {
         this.currentSelected = null;
         this.bIsCameraOrto = false;
         this.anime = new Anime()
-        // document.getElementById("figure-list").innerHTML = ''
+        document.getElementById("figure-list").innerHTML = ''
         this.objectsInScene = []
 
 
@@ -106,8 +103,8 @@ class Program {
         this.objectsInScene.push(obj)
         this.sceneReady = true;
         this.currentSelected = obj
-        // document.getElementById("figure-list").innerHTML = ''
-        // this.listUpdater(obj)
+        document.getElementById("figure-list").innerHTML = ''
+        this.listUpdater(obj)
     }
 
     update() {
@@ -124,12 +121,14 @@ class Program {
     }
 
     listUpdater(obj) {
+        document.getElementById("figure-list").innerHTML = "";
         for (var obj in this.objectsInScene) {
             var x = document.createElement("LI");
             if (program.currentSelected.type === "Group") {
                 var t = document.createTextNode(this.objectsInScene[obj].repr + " " + this.objectsInScene[obj].id);
             } else {
                 var t = document.createTextNode(this.objectsInScene[obj].repr + " " + this.objectsInScene[obj].id);
+                
             }
             x.addEventListener('click', this.clickchecker.bind(event, obj));
             x.appendChild(t);
@@ -137,9 +136,9 @@ class Program {
         }
     }
 
-    clickchecker(obj, _) {
+    clickchecker(obj, x) {
         this.currentSelected = this.objectsInScene[obj];
-        console.log(this.currentSelected);
+        document.getElementById("seleccionado").innerHTML = this.currentSelected + this.currentSelected.id
     }
 }
 

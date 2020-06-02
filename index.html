@@ -41,6 +41,7 @@
     <div class="row">
       <div class="col s2">
         <!-- BUTTONS -->
+
         <img id="btn-bask" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://www.tiendadepelotas.com/wp-content/uploads/2019/09/bal%C3%B3n-de-baloncesto-nike-dominate.jpg">
         <img id="btn-base" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://images-na.ssl-images-amazon.com/images/I/719RXbsHp0L._AC_SX425_.jpg">
         <img id="btn-teni" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://www.pluckley.net/wp-content/uploads/2016/03/Tennis-Ball-PNG.png">
@@ -49,6 +50,7 @@
         <img id="btn-eart" class="materialboxed defau" style="margin-top: 5px; width: 75; height: 75px;" src="https://pluspng.com/img-png/earth-png-1600.png">
         <img id="btn-moon" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://pngimg.com/uploads/moon/moon_PNG20.png">
         <img id="btn-mars" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://upload.wikimedia.org/wikipedia/commons/f/f5/3D_Mars.png">
+
       </div>
       <div class="col s6">
         <!-- CANVAS -->
@@ -61,6 +63,7 @@
       <div class="col s4">
         <!-- INFO ABOUT PROJECTILE -->
         <div class="row">
+          <h6>Controles simulacion</h6>
           <div class="col s12">
             <input placeholder="9.81" id="gravity_val" type="text" class="validate">
             <label for="gravity_val">Gravity</label>
@@ -71,20 +74,75 @@
             <label for="mass_val">Mass</label>
           </div>
         </div>
+
         <br>
         <a id="loadObj" class="waves-effect waves-light btn">Load OBJ</a><br><br>
         <a id="btn-pers" class="waves-effect waves-light btn">Change Perspective</a><br><br>
         <a id="btn-cam" class="waves-effect waves-light btn">Change Camera</a><br><br>
         <a id="btn-del" class="waves-effect waves-light btn">Change Camera</a><br><br>
         <a id="btn-init" class="waves-effect waves-light btn">INICIAR!</a>
+
+        <div class="row">
+          <br><br><br>
+          <hr>
+          <h6>Controles objeto</h6>
+          <p>Translacion</p>
+          <div class="col s4">
+            x: <span id="trans_val_x"></span>
+            <input id="transl-x-slider" type="range" value="0" min="-10" max="10" step=".1">
+          </div>
+          <div class="col s4">
+            y: <span id="trans_val_y"></span>
+            <input id="transl-y-slider" type="range" value="0" min="-10" max="10" step=".1">
+          </div>
+          <div class="col s4">
+            z: <span id="trans_val_z"></span>
+            <input id="transl-z-slider" type="range" value="0" min="-10" max="10" step=".1">
+          </div>
+        </div>
+
+        <div class="row">
+          <p>Escalamiento</p>
+          <div class="col s4">
+            x: <span id="escal_val_x"></span>
+            <input id="scale-x-slider" type="range" value="0" min="-10" max="10" step=".1">
+          </div>
+          <div class="col s4">
+            y: <span id="escal_val_y"></span>
+            <input id="scale-y-slider" type="range" value="0" min="-10" max="10" step=".1">
+          </div>
+          <div class="col s4">
+            z: <span id="escal_val_z"></span>
+            <input id="scale-z-slider" type="range" value="0" min="-10" max="10" step=".1">
+          </div>
+        </div>
+
+        <div class="row">
+          <p>Rotacion</p>
+          <div class="col s4">
+            x: <span id="rot_val_x"></span>
+            <input id="rotation-x-slider" type="range" value="0" min="-10" max="10" step=".1">
+          </div>
+          <div class="col s4">
+            y: <span id="rot_val_y"></span>
+            <input id="rotation-y-slider" type="range" value="0" min="-10" max="10" step=".1">
+          </div>
+          <div class="col s4">
+            z: <span id="rot_val_z"></span>
+            <input id="rotation-z-slider" type="range" value="0" min="-10" max="10" step=".1">
+          </div>
+        </div>
+        <hr>
+
       </div>
     </div>
 
     <div class="row">
       <div class="col s2"></div>
       <div class="col s6">
+        <h6>Seleccionado actualmente: <span id="seleccionado" style="color: red; font-weight: 800;"></span></h6>
         <!-- LIST OF CURRENT OBJESTS -->
-        
+        <ul id="figure-list"></ul>
       </div>
       <div class="col s4"></div>
     </div>

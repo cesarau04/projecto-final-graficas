@@ -1,56 +1,28 @@
-function loadObj(path) {
-    var mtlLoader = new THREE.MTLLoader();
-    mtlLoader.load(
-        path + ".mtl",
+function loadObj(path, texture) {
 
-        function (mtl) {
-            mtl.preload();
-            var objLoader = new THREE.OBJLoader()
-            objLoader.setMaterials(mtl);
-            objLoader.load(
-                path + ".obj",
+    var objLoader = new THREE.OBJLoader()
 
-                function (obj) {
-                    program.addMesh(obj)
-                },
+    objLoader.load(
+        path,
 
-                function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-                },
-
-                function (err) {
-                    console.log('Couldnt open obj at' + path);
+        function (obj) {
+            let newMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff, map: new THREE.TextureLoader().load(texture), side: THREE.TwoSide })
+            obj.traverse(function (child) {
+                if (child instanceof THREE.Mesh) {
+                    child.material = newMaterial;
+                    child.material.side = THREE.DoubleSide;
                 }
-            )
-        }, 
+            });
 
-        function (xhr) {},
+            program.addMesh(obj)
+        },
+
+        function (xhr) {
+            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        },
 
         function (err) {
-            console.log("No se cargo mtl");
-            
-            var objLoader = new THREE.OBJLoader()
-            objLoader.load(
-                path + ".obj",
-                
-                function (obj) {
-                    let newMaterial = new THREE.MeshPhongMaterial({color: 0xffffff, map: new THREE.TextureLoader().load("imgs/mars.png")})
-                    obj.traverse( function( child ) {
-                        if ( child instanceof THREE.Mesh ) {
-                            child.material = newMaterial;
-                        }
-                    } );
-                    program.addMesh(obj)
-                },
-
-                function (xhr) {
-                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-                },
-
-                function (err) {
-                    console.log('Couldnt open obj at' + path);
-                }
-            )
+            console.log('Couldnt open obj at' + path);
         }
     )
-}        
+}
