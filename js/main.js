@@ -40,6 +40,7 @@ class Program {
         this.clickchecker = this.clickchecker.bind(this);
 
         this.controls = null
+        this.j = 0
         // Auto init
         this.__restart__()
     }
@@ -63,6 +64,7 @@ class Program {
 
 
         this.controls = new THREE.OrbitControls(this.camera, this.threeRenderer.domElement);
+        this.j = 0.1
     }
 
     createLight() {
@@ -118,6 +120,17 @@ class Program {
             this.anime.do(this.objectsInScene[obj]);
         }
 
+        // if (this.currentSelected) {
+        //     let distances = getNextPosition(5, 45, 0, this.j, 9.81)
+        //     if (distances[1] > 0) {
+        //         this.currentSelected.position.x = distances[0] * 2
+        //         this.currentSelected.position.y = distances[1] * 2
+        //         this.j += 0.1
+        //     } else {
+        //         this.j = 0.01
+        //     }
+        // }
+        
         if (sceneEarth){
             sceneEarth = false;
             earthSetter(this.currentSelected);
@@ -142,7 +155,7 @@ class Program {
                 var t = document.createTextNode(this.objectsInScene[obj].repr + " " + this.objectsInScene[obj].id);
             } else {
                 var t = document.createTextNode(this.objectsInScene[obj].repr + " " + this.objectsInScene[obj].id);
-                
+
             }
             x.addEventListener('click', this.clickchecker.bind(event, obj));
             x.appendChild(t);

@@ -227,6 +227,14 @@ function askForFilename() {
   //loadObj("Mars.obj", "mars.png");
 }
 
+function parabolaTest() {
+  let box = new Box()
+  program.addMesh(box)
+}
+
+function btn_bask() {
+  loadBasketball()
+}
 function initEventHandler(e) {
 
   // rightside buttons
@@ -266,6 +274,12 @@ function initEventHandler(e) {
   document.getElementById("scale-x-slider").addEventListener("input",scaleSliders);
   document.getElementById("scale-y-slider").addEventListener("input",scaleSliders);
   document.getElementById("scale-z-slider").addEventListener("input",scaleSliders);
+
+  // Button Test
+  document.getElementById("btn-test").addEventListener("click", parabolaTest)
+  
+  // Basket button
+  document.getElementById("btn-bask").addEventListener("click", btn_bask)
 
   // document.getElementById("animate").addEventListener("change", onAnimToggle)
   // document.getElementById("camrot-x-slider").addEventListener("change", onCamRotX)
