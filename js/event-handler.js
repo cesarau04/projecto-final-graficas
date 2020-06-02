@@ -211,8 +211,15 @@ function changeColor(rgb){
   function initApp(){
     program.addMesh(new Floor());
   }
+
+  function askForFilename() {
+    // ASK FOR FILENAME
+    loadObj("models/blender")
+  }
+
   function initEventHandler(e) {
     document.getElementById("btn-init").addEventListener("click", initApp);
+    document.getElementById("loadObj").addEventListener("click", askForFilename);
     // document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
     // document.getElementById("pan-slider").addEventListener("change", onPanCamera);
     // document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);

@@ -6,8 +6,6 @@ class Floor extends THREE.Mesh{
         // this.material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
         this.material = new THREE.MeshPhongMaterial({color: 0xffffff, map: new THREE.TextureLoader().load("imgs/red-brick.jpg")})
         this.mesh = new THREE.Mesh( this.geometry, this.material );
-
-        console.log(this.mesh);
         
         this.repr = "floor"
 

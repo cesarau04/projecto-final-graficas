@@ -11,6 +11,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <script src="js/lib/three.min.js" type="text/javascript"></script>
+  <script src="js/lib/OBJLoader.js" type="text/javascript"></script>
+  <script src="js/lib/MTLLoader.js" type="text/javascript"></script>
   <script src="js/event-handler.js" type="text/javascript"></script>
   <script src="js/main.js" type="text/javascript"></script>
   <script src="js/Box.js" type="text/javascript"></script>
@@ -22,6 +24,8 @@
   <script src="js/Torus.js" type="text/javascript"></script>
   <script src="js/TorusKnot.js" type="text/javascript"></script>
   <script src="js/Creeper.js" type="text/javascript"></script>
+
+  <script src="js/loader.js" type="text/javascript"></script>
 </head>
 
 <body onload=main();>
@@ -35,11 +39,11 @@
     <div class="row">
       <div class="col s2">
         <!-- BUTTONS -->
-        <img style="margin-top: 5px; width: 75; height: 75px;" src="https://www.tiendadepelotas.com/wp-content/uploads/2019/09/bal%C3%B3n-de-baloncesto-nike-dominate.jpg"><br>
-        <img style="margin-top: 5px; width: 75; height: 75px;" src="https://images-na.ssl-images-amazon.com/images/I/719RXbsHp0L._AC_SX425_.jpg"><br>
-        <img style="margin-top: 5px; width: 75; height: 75px;" src="https://images-na.ssl-images-amazon.com/images/I/81XVJ9GBvuL._AC_SX425_.jpg"><br>
-        <img style="margin-top: 5px; width: 75; height: 75px;" src="https://images-na.ssl-images-amazon.com/images/I/51%2B3ImEa6OL._AC_SX425_.jpg"><br>
-        <img style="margin-top: 5px; width: 75; height: 75px;" src="https://cdn130.picsart.com/309458384128211.png"><br>
+        <img id="TODO" style="margin-top: 5px; width: 75; height: 75px;" src="https://www.tiendadepelotas.com/wp-content/uploads/2019/09/bal%C3%B3n-de-baloncesto-nike-dominate.jpg"><br>
+        <img id="TODO" style="margin-top: 5px; width: 75; height: 75px;" src="https://images-na.ssl-images-amazon.com/images/I/719RXbsHp0L._AC_SX425_.jpg"><br>
+        <img id="TODO" style="margin-top: 5px; width: 75; height: 75px;" src="https://images-na.ssl-images-amazon.com/images/I/81XVJ9GBvuL._AC_SX425_.jpg"><br>
+        <img id="TODO" style="margin-top: 5px; width: 75; height: 75px;" src="https://images-na.ssl-images-amazon.com/images/I/51%2B3ImEa6OL._AC_SX425_.jpg"><br>
+        <img id="loadObj" style="margin-top: 5px; width: 75; height: 75px;" src="https://cdn130.picsart.com/309458384128211.png"><br>
       </div>
       <div class="col s6">
         <!-- CANVAS -->
