@@ -3,6 +3,13 @@ hex = "#ffffff"
 
 function toolsEventHandler(e) {
   console.log("Enter EventHandler with " + e);
+
+  if (e == 'playSound') {
+    playSound();
+  }
+
+
+  // older project lines
   if (e === 'creeper') {
     program.addMesh(new Creeper());
     program.currentSelected.changeWireframe(isWireFrame);
@@ -210,16 +217,18 @@ function onCamRotZ(e) {
 
 function initApp() {
   program.addMesh(new Floor());
+  loadSound("background.mp3", true, 0.1)
 }
 
 function askForFilename() {
   // ASK FOR FILENAME
-  loadObj("models/Mars.obj", "imgs/Mars.png")
+  loadObj("models/Mars.obj", "imgs/mars.png");
 }
 
 function initEventHandler(e) {
   document.getElementById("btn-init").addEventListener("click", initApp);
   document.getElementById("loadObj").addEventListener("click", askForFilename);
+  document.getElementById("btn-cam").addEventListener("click", function(){loadSound("throw.flac", false, 0.5)});
 
   // document.addEventListener("keydown", onDocumentKeyDown, false);
 
