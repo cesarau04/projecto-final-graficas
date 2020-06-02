@@ -214,7 +214,7 @@ function initApp() {
 
 function askForFilename() {
   // ASK FOR FILENAME
-  loadObj("models/Mars.obj", "imgs/Mars.png")
+  loadObj("models/Mars.obj", "imgs/mars.png")
 }
 
 function initEventHandler(e) {
