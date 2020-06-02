@@ -26,3 +26,20 @@ function loadObj(path, texture) {
         }
     )
 }
+
+function loadSound(soundFile, continuous, volume) {
+    console.log("played sound")
+    var listener = new THREE.AudioListener();
+    program.camera.add( listener );
+  
+    var sound = new THREE.Audio( listener );
+  
+    var audioLoader = new THREE.AudioLoader();
+
+    audioLoader.load("sounds/" + soundFile, function( buffer ){
+      sound.setBuffer( buffer );
+      sound.setLoop( continuous );
+      sound.setVolume( volume );
+      sound.play();
+    })
+  }
