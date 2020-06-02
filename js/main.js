@@ -3,6 +3,7 @@ var canvas;
 var program;
 var mesh;
 
+
 function main() {
     canvas = document.getElementById("canvas");
     program = new Program(canvas);
@@ -38,6 +39,8 @@ class Program {
         this.createOrtoCamera = this.createOrtoCamera.bind(this)
         this.listUpdater = this.listUpdater.bind(this);
         this.clickchecker = this.clickchecker.bind(this);
+
+        this.controls = null
         // Auto init
         this.__restart__()
     }
@@ -58,6 +61,9 @@ class Program {
         this.anime = new Anime()
         // document.getElementById("figure-list").innerHTML = ''
         this.objectsInScene = []
+
+
+        this.controls = new THREE.OrbitControls(this.camera, this.threeRenderer.domElement);
     }
 
     createLight() {
