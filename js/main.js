@@ -10,8 +10,6 @@ function main() {
     canvas = document.getElementById("canvas");
     program = new Program(canvas);
 
-    // document.getElementById("animate").checked = false;
-
     initEventHandler();
     resetUI();
 
@@ -41,6 +39,14 @@ class Program {
 
         this.controls = null
         this.j = 0
+        this.projectil = null
+
+        this.bShouldThrow = false
+        this.velocity = null
+        this.angle = null
+        this.height = null
+        this.gravity = null
+
         // Auto init
         this.__restart__()
     }
@@ -65,6 +71,7 @@ class Program {
 
         this.controls = new THREE.OrbitControls(this.camera, this.threeRenderer.domElement);
         this.j = 0.1
+        this.projectil = null
     }
 
     createLight() {
@@ -119,17 +126,18 @@ class Program {
         for (var obj in this.objectsInScene) {
             this.anime.do(this.objectsInScene[obj]);
         }
-
-        // if (this.currentSelected) {
-        //     let distances = getNextPosition(5, 45, 0, this.j, 9.81)
-        //     if (distances[1] > 0) {
-        //         this.currentSelected.position.x = distances[0] * 2
-        //         this.currentSelected.position.y = distances[1] * 2
-        //         this.j += 0.1
-        //     } else {
-        //         this.j = 0.01
-        //     }
-        // }
+        
+        if (this.bShouldThrow) {
+            let distances = getNextPosition(this.velocity, this.angle, this.height, this.j, this.gravity)
+            if (distances[1] > 0) {
+                this.currentSelected.position.x = distances[0] * 2
+                this.currentSelected.position.y = distances[1] * 2
+                this.j += 0.01
+            } else {
+                this.j = 0.01
+                this.bShouldThrow = false
+            }
+        }
         
         if (sceneEarth){
             sceneEarth = false;

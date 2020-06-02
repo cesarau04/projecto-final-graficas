@@ -48,7 +48,7 @@
           <a>Balls</a>
           <div class="divider"></div>
           <div class="row">
-            <a id="btn-bask" class="btn-floating btn-large waves-effect waves-light disabled">
+            <a id="btn-bask" class="btn-floating btn-large waves-effect waves-light">
               <img id="img-bask" style="width: 100%; height: 100%; opacity: 0.5;" src="https://www.tiendadepelotas.com/wp-content/uploads/2019/09/bal%C3%B3n-de-baloncesto-nike-dominate.jpg">
             </a>
           </div>
@@ -103,21 +103,26 @@
         <div id="container">
           <canvas id="canvas" width="600" height="600"></canvas>
           <div id="overlay">I am inside the canvas *rawr* *daddy*</div>
-        </div>
-        
+          <a id="btn-throw" class="waves-effect waves-light btn">Throw</a>
+        </div>  
       </div>
       <div class="col s5">
         <!-- INFO ABOUT PROJECTILE -->
         <div class="row">
           <h6>Controles simulacion</h6>
           <div class="col s12">
-            <input placeholder="9.81" id="gravity_val" type="text" class="validate">
-            <label for="gravity_val">Gravity</label>
+            <input placeholder="5" id="velocity_val" type="text" class="validate">
+            <label for="velocity_val">Velocity</label>
           </div>
 
           <div class="col s12">
-            <input placeholder="1" id="mass_val" type="text" class="validate">
-            <label for="mass_val">Mass</label>
+            <input placeholder="45" id="angle_val" type="text" class="validate">
+            <label for="angle_val">Angle</label>
+          </div>
+
+          <div class="col s12">
+            <input placeholder="9.81" id="gravity_val" type="text" class="validate">
+            <label for="gravity_val">Gravity</label>
           </div>
         </div>
 
