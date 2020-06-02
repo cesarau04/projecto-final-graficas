@@ -214,7 +214,7 @@ function initApp() {
 
 function askForFilename() {
   // ASK FOR FILENAME
-  loadObj("models/Mars")
+  loadObj("models/Mars.obj", "imgs/Mars.png")
 }
 
 function initEventHandler(e) {
@@ -228,20 +228,20 @@ function initEventHandler(e) {
   // document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
   // document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
 
-  // // Translation Sliders
-  // document.getElementById("transl-x-slider").addEventListener("change",translationSliders);
-  // document.getElementById("transl-y-slider").addEventListener("change",translationSliders);
-  // document.getElementById("transl-z-slider").addEventListener("change",translationSliders);
+  // Translation Sliders
+  document.getElementById("transl-x-slider").addEventListener("input",translationSliders);
+  document.getElementById("transl-y-slider").addEventListener("input",translationSliders);
+  document.getElementById("transl-z-slider").addEventListener("input",translationSliders);
 
-  // // Rotation Sliders
-  // document.getElementById("rotation-x-slider").addEventListener("change",rotationSliders);
-  // document.getElementById("rotation-y-slider").addEventListener("change",rotationSliders);
-  // document.getElementById("rotation-z-slider").addEventListener("change",rotationSliders);
+  // Rotation Sliders
+  document.getElementById("rotation-x-slider").addEventListener("input",rotationSliders);
+  document.getElementById("rotation-y-slider").addEventListener("input",rotationSliders);
+  document.getElementById("rotation-z-slider").addEventListener("input",rotationSliders);
 
-  // // Scale Sliders
-  // document.getElementById("scale-x-slider").addEventListener("change",scaleSliders);
-  // document.getElementById("scale-y-slider").addEventListener("change",scaleSliders);
-  // document.getElementById("scale-z-slider").addEventListener("change",scaleSliders);
+  // Scale Sliders
+  document.getElementById("scale-x-slider").addEventListener("input",scaleSliders);
+  document.getElementById("scale-y-slider").addEventListener("input",scaleSliders);
+  document.getElementById("scale-z-slider").addEventListener("input",scaleSliders);
 
   // document.getElementById("animate").addEventListener("change", onAnimToggle)
   // document.getElementById("camrot-x-slider").addEventListener("change", onCamRotX)
@@ -253,28 +253,28 @@ function translationSliders(event) {
   var newX = Number(document.getElementById("transl-x-slider").value) / CamVelocityFactor;
   var newY = Number(document.getElementById("transl-y-slider").value) / CamVelocityFactor;
   var newZ = Number(document.getElementById("transl-z-slider").value) / CamVelocityFactor;
-  document.getElementById("translation-x").value = newX;
-  document.getElementById("translation-y").value = newY;
-  document.getElementById("translation-z").value = newZ;
-  program.currentSelected.updatePosition(newX, newY, newZ);
+  document.getElementById("trans_val_x").innerHTML = newX;
+  document.getElementById("trans_val_y").innerHTML = newY;
+  document.getElementById("trans_val_z").innerHTML = newZ;
+  program.currentSelected.updatePosition(program.currentSelected.position.x + newX, program.currentSelected.position.y + newY, program.currentSelected.position.z + newZ);
 }
 
 function rotationSliders(event) {
   var newX = Number(document.getElementById("rotation-x-slider").value) / CamVelocityFactor;
   var newY = Number(document.getElementById("rotation-y-slider").value) / CamVelocityFactor;
   var newZ = Number(document.getElementById("rotation-z-slider").value) / CamVelocityFactor;
-  document.getElementById("rotation-x").value = newX;
-  document.getElementById("rotation-y").value = newY;
-  document.getElementById("rotation-z").value = newZ;
-  program.currentSelected.updateRotation(newX, newY, newZ);
+  document.getElementById("rot_val_x").innerHTML = newX;
+  document.getElementById("rot_val_y").innerHTML = newY;
+  document.getElementById("rot_val_z").innerHTML = newZ;
+  program.currentSelected.updateRotation(program.currentSelected.rotation.x + newX, program.currentSelected.rotation.y + newY, program.currentSelected.rotation.z + newZ);
 }
 
 function scaleSliders(event) {
   var newX = Number(document.getElementById("scale-x-slider").value / (CamVelocityFactor * 2));
   var newY = Number(document.getElementById("scale-y-slider").value / (CamVelocityFactor * 2));
   var newZ = Number(document.getElementById("scale-z-slider").value / (CamVelocityFactor * 2));
-  document.getElementById("scale-x").value = newX;
-  document.getElementById("scale-y").value = newY;
-  document.getElementById("scale-z").value = newZ;
-  program.currentSelected.updateScale(newX, newY, newZ);
+  document.getElementById("escal_val_x").innerHTML = newX;
+  document.getElementById("escal_val_y").innerHTML = newY;
+  document.getElementById("escal_val_z").innerHTML = newZ;
+  program.currentSelected.updateScale(program.currentSelected.scale.x + newX, program.currentSelected.scale.y + newY, program.currentSelected.scale.z + newZ);
 }
