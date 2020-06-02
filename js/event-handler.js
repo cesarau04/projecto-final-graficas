@@ -230,6 +230,9 @@ function parabolaTest() {
   program.addMesh(box)
 }
 
+function btn_bask() {
+  loadBasketball()
+}
 function initEventHandler(e) {
   document.getElementById("btn-init").addEventListener("click", initApp);
   document.getElementById("loadObj").addEventListener("click", askForFilename);
@@ -259,6 +262,9 @@ function initEventHandler(e) {
 
   // Button Test
   document.getElementById("btn-test").addEventListener("click", parabolaTest)
+  
+  // Basket button
+  document.getElementById("btn-bask").addEventListener("click", btn_bask)
 
   // document.getElementById("animate").addEventListener("change", onAnimToggle)
   // document.getElementById("camrot-x-slider").addEventListener("change", onCamRotX)
