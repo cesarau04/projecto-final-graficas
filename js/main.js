@@ -2,6 +2,9 @@
 var canvas;
 var program;
 var mesh;
+var sceneEarth = false;
+var sceneMoon = false;
+var sceneMars = false;
 
 function main() {
     canvas = document.getElementById("canvas");
@@ -128,6 +131,17 @@ class Program {
         //     }
         // }
         
+        if (sceneEarth){
+            sceneEarth = false;
+
+        }else if (sceneMoon){
+            sceneMoon = false;
+
+        }else if (sceneMars){
+            console.log("setted")
+            sceneMars = false;
+            marsSetter(program.currentSelected);
+        }
         refreshTransformUI();
         requestAnimationFrame(this.update);
     }
