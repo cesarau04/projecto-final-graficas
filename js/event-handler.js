@@ -1,4 +1,5 @@
 isWireFrame = false;
+backgorundPlaying = false;
 hex = "#ffffff"
 
 function toolsEventHandler(e) {
@@ -217,7 +218,10 @@ function onCamRotZ(e) {
 
 function initApp() {
   program.addMesh(new Floor());
-  loadSound("background.mp3", true, 0.1)
+  if(!backgorundPlaying){
+    backgorundPlaying = true;
+    loadSound("background.mp3", true, 0.1);
+  }  
 }
 
 function askForFilename() {
