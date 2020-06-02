@@ -11,6 +11,7 @@ function loadObj(path, texture) {
 
         function (obj) {
             let newMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff, map: new THREE.TextureLoader().load(imgsPath + texture), side: THREE.TwoSide })
+            newMaterial.repeat = 20
             obj.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
                     child.material = newMaterial;
@@ -18,8 +19,17 @@ function loadObj(path, texture) {
                 }
             });
 
+            switch(path){
+                case "earth.obj":
+                    sceneEarth = true;
+                case "mars.obj":
+                    sceneMars = true;
+                case "mars.obj":
+                    sceneMoon = true;
+            }
+
             program.addMesh(obj);
-            sceneMars = true;
+            //sceneMars = true;
         },
 
         function (xhr) {

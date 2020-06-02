@@ -215,7 +215,7 @@ function initApp() {
 
   document.getElementById("btn-init").setAttribute("class", "waves-effect waves-light btn disabled")
 
-  program.addMesh(new Floor());
+  earthScenario();
   if(!backgorundPlaying){
     backgorundPlaying = true;
     loadSound("background.mp3", true, 0.1);
@@ -224,7 +224,7 @@ function initApp() {
 
 function askForFilename() {
   // ASK FOR FILENAME
-  loadObj("Mars.obj", "mars.png");
+  //loadObj("Mars.obj", "mars.png");
 }
 
 function initEventHandler(e) {

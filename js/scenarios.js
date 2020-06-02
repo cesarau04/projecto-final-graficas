@@ -4,7 +4,7 @@ dict = [
         img: "earth.jpg"
     },
     {
-        obj: "moon.obj",
+        obj: "mars.obj",
         img: "moon.jpg"
     },
     {
@@ -18,22 +18,28 @@ scenarios = {
 }
 
 function earthScenario(){
+    program.__restart__()
 
+    loadObj(dict[0].obj, dict[0].img)
 }
 
-function earthSetter(){
-    
+function earthSetter(obj){
+    console.log(obj)
 }
 
 function moonScenario(){
+    program.__restart__()
 
+    loadObj(dict[1].obj, dict[1].img)
 }
 
-function moonSetter(){
-    
+function moonSetter(obj){
+    console.log(obj)
 }
 
 function marsScenario(){
+    program.__restart__()
+    
     loadObj(dict[2].obj, dict[2].img)
 }
 

@@ -120,14 +120,15 @@ class Program {
 
         if (sceneEarth){
             sceneEarth = false;
+            earthSetter(this.currentSelected);
 
         }else if (sceneMoon){
             sceneMoon = false;
+            moonSetter(this.currentSelected);
 
         }else if (sceneMars){
-            console.log("setted")
             sceneMars = false;
-            marsSetter(program.currentSelected);
+            marsSetter(this.currentSelected);
         }
         refreshTransformUI();
         requestAnimationFrame(this.update);
