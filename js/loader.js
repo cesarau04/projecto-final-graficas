@@ -19,17 +19,18 @@ function loadObj(path, texture) {
                 }
             });
 
-            switch(path){
-                case "earth.obj":
-                    sceneEarth = true;
-                case "mars.obj":
-                    sceneMars = true;
-                case "mars.obj":
-                    sceneMoon = true;
-            }
-
             program.addMesh(obj);
-            //sceneMars = true;
+            switch(texture){
+                case "earth.jpg":
+                    sceneEarth = true;
+                    break;
+                case "mars.png":
+                    sceneMars = true;
+                    break;
+                case "moon.jpg":
+                    sceneMoon = true;
+                    break;
+            }
         },
 
         function (xhr) {

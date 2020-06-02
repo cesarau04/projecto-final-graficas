@@ -132,17 +132,29 @@ class Program {
         // }
         
         if (sceneEarth){
+            console.log("earth")
             sceneEarth = false;
+            sceneMoon = false;
+            sceneMars = false;
             earthSetter(this.currentSelected);
 
-        }else if (sceneMoon){
+        }
+        if (sceneMoon){
+            console.log("moon")
+            sceneEarth = false;
             sceneMoon = false;
+            sceneMars = false;
             moonSetter(this.currentSelected);
 
-        }else if (sceneMars){
+        }
+        if (sceneMars){
+            console.log("mars")
+            sceneEarth = false;
+            sceneMoon = false;
             sceneMars = false;
             marsSetter(this.currentSelected);
         }
+
         refreshTransformUI();
         requestAnimationFrame(this.update);
     }
