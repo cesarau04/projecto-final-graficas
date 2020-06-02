@@ -5,7 +5,7 @@ function loadObj(path, texture) {
     objLoader.load(
         path,
 
-        function (obj) {
+        function (obj) {            
             let newMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff, map: new THREE.TextureLoader().load(texture), side: THREE.TwoSide })
             obj.traverse(function (child) {
                 if (child instanceof THREE.Mesh) {
@@ -13,7 +13,7 @@ function loadObj(path, texture) {
                     child.material.side = THREE.DoubleSide;
                 }
             });
-
+            
             program.addMesh(obj)
         },
 

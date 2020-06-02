@@ -225,6 +225,11 @@ function askForFilename() {
   loadObj("models/Mars.obj", "imgs/mars.png");
 }
 
+function parabolaTest() {
+  let box = new Box()
+  program.addMesh(box)
+}
+
 function initEventHandler(e) {
   document.getElementById("btn-init").addEventListener("click", initApp);
   document.getElementById("loadObj").addEventListener("click", askForFilename);
@@ -251,6 +256,9 @@ function initEventHandler(e) {
   document.getElementById("scale-x-slider").addEventListener("input",scaleSliders);
   document.getElementById("scale-y-slider").addEventListener("input",scaleSliders);
   document.getElementById("scale-z-slider").addEventListener("input",scaleSliders);
+
+  // Button Test
+  document.getElementById("btn-test").addEventListener("click", parabolaTest)
 
   // document.getElementById("animate").addEventListener("change", onAnimToggle)
   // document.getElementById("camrot-x-slider").addEventListener("change", onCamRotX)
