@@ -36,30 +36,29 @@
       <div class="col s12">Awesome Parabolic Game</div>
     </div>
     <div class="row">
-      <a id="btn-init" class="waves-effect waves-light btn">INICIAR!</a>
+      
     </div>
     <div class="row">
       <div class="col s2">
         <!-- BUTTONS -->
-        <img id="TODO" style="margin-top: 5px; width: 75; height: 75px;"
-          src="https://www.tiendadepelotas.com/wp-content/uploads/2019/09/bal%C3%B3n-de-baloncesto-nike-dominate.jpg"><br>
-        <img id="TODO" style="margin-top: 5px; width: 75; height: 75px;"
-          src="https://images-na.ssl-images-amazon.com/images/I/719RXbsHp0L._AC_SX425_.jpg"><br>
-        <img id="TODO" style="margin-top: 5px; width: 75; height: 75px;"
-          src="https://images-na.ssl-images-amazon.com/images/I/81XVJ9GBvuL._AC_SX425_.jpg"><br>
-        <img id="TODO" style="margin-top: 5px; width: 75; height: 75px;"
-          src="https://images-na.ssl-images-amazon.com/images/I/51%2B3ImEa6OL._AC_SX425_.jpg"><br>
-        <img id="loadObj" style="margin-top: 5px; width: 75; height: 75px;"
-          src="https://cdn130.picsart.com/309458384128211.png"><br>
-        <img id="bSolid" style="margin-top: 5px; width: 75; height: 75px;"
-          src="https://i.ya-webdesign.com/images/purple-circle-png-10.png" onclick="toolsEventHandler('solid');"><br>
-        <img id="bWireframe" style="margin-top: 5px; width: 75; height: 75px;"
-          src="https://w7.pngwing.com/pngs/933/853/png-transparent-globe-world-science-wireframe-miscellaneous-presentation-symmetry-thumbnail.png"
-          onclick="toolsEventHandler('wiref');"><br>
+
+        <img id="btn-bask" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://www.tiendadepelotas.com/wp-content/uploads/2019/09/bal%C3%B3n-de-baloncesto-nike-dominate.jpg">
+        <img id="btn-base" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://images-na.ssl-images-amazon.com/images/I/719RXbsHp0L._AC_SX425_.jpg">
+        <img id="btn-teni" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://www.pluckley.net/wp-content/uploads/2016/03/Tennis-Ball-PNG.png">
+        <img id="btn-bowl" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://pngimg.com/uploads/bowling/bowling_PNG10.png">
+        <a>Scenarios</a>
+        <img id="btn-eart" class="materialboxed defau" style="margin-top: 5px; width: 75; height: 75px;" src="https://pluspng.com/img-png/earth-png-1600.png">
+        <img id="btn-moon" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://pngimg.com/uploads/moon/moon_PNG20.png">
+        <img id="btn-mars" class="materialboxed" style="margin-top: 5px; width: 75; height: 75px;" src="https://upload.wikimedia.org/wikipedia/commons/f/f5/3D_Mars.png">
+
       </div>
       <div class="col s6">
         <!-- CANVAS -->
-        <canvas id="canvas" width="600" height="600"></canvas>
+        <div id="container">
+          <canvas id="canvas" width="600" height="600"></canvas>
+          <div id="overlay">I am inside the canvas</div>
+        </div>
+        
       </div>
       <div class="col s4">
         <!-- INFO ABOUT PROJECTILE -->
@@ -75,6 +74,14 @@
             <label for="mass_val">Mass</label>
           </div>
         </div>
+
+        <br>
+        <a id="loadObj" class="waves-effect waves-light btn">Load OBJ</a><br><br>
+        <a id="btn-pers" class="waves-effect waves-light btn">Change Perspective</a><br><br>
+        <a id="btn-cam" class="waves-effect waves-light btn">Change Camera</a><br><br>
+        <a id="btn-del" class="waves-effect waves-light btn">Change Camera</a><br><br>
+        <a id="btn-init" class="waves-effect waves-light btn">INICIAR!</a>
+
         <div class="row">
           <br><br><br>
           <hr>
@@ -126,6 +133,7 @@
           </div>
         </div>
         <hr>
+
       </div>
     </div>
 
