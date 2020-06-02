@@ -2,9 +2,13 @@ class Floor extends THREE.Mesh{
     constructor(w=5., h=.1, d=5.){
         super();
         this.geometry = new THREE.BoxGeometry( w, h, d );
-        this.material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+
+        // this.material = new THREE.MeshBasicMaterial( {color: 0xffffff} );
+        this.material = new THREE.MeshPhongMaterial({color: 0xffffff, map: new THREE.TextureLoader().load("imgs/red-brick.jpg")})
         this.mesh = new THREE.Mesh( this.geometry, this.material );
 
+        console.log(this.mesh);
+        
         this.repr = "floor"
 
         this.shouldAnimate = false;

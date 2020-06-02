@@ -127,33 +127,33 @@ function changeColor(rgb){
   }
 
   function resetUI() {
-    document.getElementById("zoom-slider").value = 0
-    document.getElementById("pan-slider").value = 0
-    document.getElementById("dolly-slider").value = 0
-    document.getElementById("tilt-slider").value = 0
+    // document.getElementById("zoom-slider").value = 0
+    // document.getElementById("pan-slider").value = 0
+    // document.getElementById("dolly-slider").value = 0
+    // document.getElementById("tilt-slider").value = 0
   }
 
   function refreshTransformUI() {
     if (program.currentSelected === null) {
       return
     }
-    document.getElementById("translation-x").value = program.currentSelected.position.x
-    document.getElementById("translation-y").value = program.currentSelected.position.y
-    document.getElementById("translation-z").value = program.currentSelected.position.z
+    // document.getElementById("translation-x").value = program.currentSelected.position.x
+    // document.getElementById("translation-y").value = program.currentSelected.position.y
+    // document.getElementById("translation-z").value = program.currentSelected.position.z
 
-    document.getElementById("rotation-x").value = program.currentSelected.rotation.x
-    document.getElementById("rotation-y").value = program.currentSelected.rotation.y
-    document.getElementById("rotation-z").value = program.currentSelected.rotation.z
+    // document.getElementById("rotation-x").value = program.currentSelected.rotation.x
+    // document.getElementById("rotation-y").value = program.currentSelected.rotation.y
+    // document.getElementById("rotation-z").value = program.currentSelected.rotation.z
 
-    document.getElementById("scale-x").value = program.currentSelected.scale.x
-    document.getElementById("scale-y").value = program.currentSelected.scale.y
-    document.getElementById("scale-z").value = program.currentSelected.scale.z
+    // document.getElementById("scale-x").value = program.currentSelected.scale.x
+    // document.getElementById("scale-y").value = program.currentSelected.scale.y
+    // document.getElementById("scale-z").value = program.currentSelected.scale.z
 
-    if (program.currentSelected.shouldAnimate) {
-      document.getElementById("animate").checked = true;
-    } else {
-      document.getElementById("animate").checked = false;
-    }
+    // if (program.currentSelected.shouldAnimate) {
+    //   document.getElementById("animate").checked = true;
+    // } else {
+    //   document.getElementById("animate").checked = false;
+    // }
   }
 
   // function 
@@ -208,31 +208,35 @@ function changeColor(rgb){
     document.getElementById("camrot-z-slider").value = 0
   }
 
+  function initApp(){
+    program.addMesh(new Floor());
+  }
   function initEventHandler(e) {
-    document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
-    document.getElementById("pan-slider").addEventListener("change", onPanCamera);
-    document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
-    document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
+    document.getElementById("btn-init").addEventListener("click", initApp);
+    // document.getElementById("zoom-slider").addEventListener("change", onZoomCamera);
+    // document.getElementById("pan-slider").addEventListener("change", onPanCamera);
+    // document.getElementById("dolly-slider").addEventListener("change", onDollyCamera);
+    // document.getElementById("tilt-slider").addEventListener("change", onTiltCamera);
 
-    // Translation Sliders
-    document.getElementById("transl-x-slider").addEventListener("change",translationSliders);
-    document.getElementById("transl-y-slider").addEventListener("change",translationSliders);
-    document.getElementById("transl-z-slider").addEventListener("change",translationSliders);
+    // // Translation Sliders
+    // document.getElementById("transl-x-slider").addEventListener("change",translationSliders);
+    // document.getElementById("transl-y-slider").addEventListener("change",translationSliders);
+    // document.getElementById("transl-z-slider").addEventListener("change",translationSliders);
 
-    // Rotation Sliders
-    document.getElementById("rotation-x-slider").addEventListener("change",rotationSliders);
-    document.getElementById("rotation-y-slider").addEventListener("change",rotationSliders);
-    document.getElementById("rotation-z-slider").addEventListener("change",rotationSliders);
+    // // Rotation Sliders
+    // document.getElementById("rotation-x-slider").addEventListener("change",rotationSliders);
+    // document.getElementById("rotation-y-slider").addEventListener("change",rotationSliders);
+    // document.getElementById("rotation-z-slider").addEventListener("change",rotationSliders);
 
-    // Scale Sliders
-    document.getElementById("scale-x-slider").addEventListener("change",scaleSliders);
-    document.getElementById("scale-y-slider").addEventListener("change",scaleSliders);
-    document.getElementById("scale-z-slider").addEventListener("change",scaleSliders);
+    // // Scale Sliders
+    // document.getElementById("scale-x-slider").addEventListener("change",scaleSliders);
+    // document.getElementById("scale-y-slider").addEventListener("change",scaleSliders);
+    // document.getElementById("scale-z-slider").addEventListener("change",scaleSliders);
 
-    document.getElementById("animate").addEventListener("change", onAnimToggle)
-    document.getElementById("camrot-x-slider").addEventListener("change", onCamRotX)
-    document.getElementById("camrot-y-slider").addEventListener("change", onCamRotY)
-    document.getElementById("camrot-z-slider").addEventListener("change", onCamRotZ)
+    // document.getElementById("animate").addEventListener("change", onAnimToggle)
+    // document.getElementById("camrot-x-slider").addEventListener("change", onCamRotX)
+    // document.getElementById("camrot-y-slider").addEventListener("change", onCamRotY)
+    // document.getElementById("camrot-z-slider").addEventListener("change", onCamRotZ)
   }
 
   function translationSliders(event){
