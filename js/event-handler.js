@@ -2,7 +2,7 @@ isWireFrame = false;
 hex = "#ffffff"
 
 function toolsEventHandler(e) {
-  console.log("Enter EventHandler");
+  console.log("Enter EventHandler with " + e);
   if (e === 'creeper') {
     program.addMesh(new Creeper());
     program.currentSelected.changeWireframe(isWireFrame);
